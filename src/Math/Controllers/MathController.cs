@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Math.API.Controllers;
 
-[Route("[controller]")]
+[Route("[controller]")] 
 [ApiController]
 public class MathController : ControllerBase
 {
