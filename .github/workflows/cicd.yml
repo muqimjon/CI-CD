@@ -39,7 +39,7 @@ jobs:
       - name: Test
         run: dotnet test
 
-  dockerize:
+  dokerize:
     needs: test
     runs-on: ubuntu-latest
     env:
@@ -53,10 +53,7 @@ jobs:
         uses: actions/setup-dotnet@v3
       - name: Build Docker image
         run: docker build -t $DOCKER_USERNAME/ci-cd -f src/Math/Dockerfile .
-      - name: Push Docker image
-        run: |
-          set -e
-          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+      - name: Push docker image
+        run: 
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           docker push $DOCKER_USERNAME/ci-cd
-
-          
