@@ -52,7 +52,9 @@ jobs:
         uses: actions/setup-dotnet@v3
       - name: Build Docker image
         run: docker build -t muqimjon/ci-cd -f src/Math/Dockerfile .
-      - name: Push docker image
-        run: 
+      - name: Push Docker image
+        run: |
+          set -e
           docker login -u muqimjon -p $DOCKER_PASSWORD
           docker push muqimjon/ci-cd
+      
