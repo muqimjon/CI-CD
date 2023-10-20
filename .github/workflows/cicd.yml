@@ -55,6 +55,7 @@ jobs:
       - name: Build Docker image
         run: docker build -t $DOCKER_USERNAME/ci-cd -f src/Math/Dockerfile .
       - name: Push Docker image
-        run:
+        run: |
+          set -e
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
           docker push $DOCKER_USERNAME/ci-cd
