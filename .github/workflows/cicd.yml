@@ -47,15 +47,15 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Setup .NET 7
         uses: actions/setup-dotnet@v3
       - name: Build Docker image
-        run: docker build -t $DOCKER_USERNAME/ci-cd -f src/Math/Dockerfile .
-      - name: Push docker iamga
+        run: docker build -t $docker_username/ci-cd -f src/Math/Dockerfile .
+      - name: Push docker imaga
         run: 
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           docker push $DOCKER_USERNAME/ci-cd
