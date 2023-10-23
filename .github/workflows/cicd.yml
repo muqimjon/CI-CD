@@ -75,7 +75,7 @@ jobs:
           docker push $DOCKER_USERNAME/ci-cd
 
   deploy:
-    name: Build
+    name: deploy
     needs: dockerize
     runs-on: ubuntu-latest
     steps:
@@ -83,8 +83,10 @@ jobs:
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
-          key: ${{ secrets.PASSWORD }}
-          username: ${{ secrets.USERNAME }}
+          username: ubuntu
+          key: ${{ secrets.KEY }}
+          port: 22
           script: |
             cd ~/app
-            docker--compose up -d --no-deps --build math
+            docker-compose up -d --no-deps --build math
+        

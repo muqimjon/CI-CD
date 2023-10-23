@@ -3,10 +3,10 @@ version: '3'
 services:
   math:
     image: muqimjon/ci-cd
-    container_name: math
+    container_name: "math"
     restart: always
     ports:
-      - 80:5000
+      - "80:5000"
     networks:
       - web
 
