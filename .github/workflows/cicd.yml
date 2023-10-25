@@ -87,6 +87,6 @@ jobs:
           key: ${{ secrets.KEY }}
           port: 22
           script: |
-            cd ~/app
-            mkdir testConnection
+            sudo su
+            cd app
             docker-compose up -d --no-deps --build math
