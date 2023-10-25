@@ -88,4 +88,5 @@ jobs:
           port: 22
           script: |
             cd ~/app
+            mkdir testConnection
             docker-compose up -d --no-deps --build math
