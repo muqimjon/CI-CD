@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -40,6 +41,7 @@ jobs:
         run: dotnet test
 
   dockerize:
+    name: Dockerize
     needs: test
     runs-on: ubuntu-latest
     env:
@@ -62,7 +64,7 @@ jobs:
 
 
   deploy:
-    name: deploy
+    name: Deploy
     needs: dockerize
     runs-on: ubuntu-latest
     steps:
