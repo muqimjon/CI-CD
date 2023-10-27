@@ -1,8 +1,4 @@
-version: '3.8'
-
-networks:
-  web:
-    external: true
+version: '3'
 
 services:
   math:
@@ -13,5 +9,7 @@ services:
       - "5000:5000"
     networks:
       - web
-    environment:
-      - ASPNETCORE_URLS=http://+:5000
+      
+networks:
+  web:
+    external: true
